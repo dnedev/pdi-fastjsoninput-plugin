@@ -12,6 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
+		<version.pentaho>5.0.9</version.pentaho>
 	</properties>
 
 	<repositories>
@@ -25,23 +26,23 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
 			<artifactId>kettle-core</artifactId>
-			<version>5.0.9</version>
+			<version>${version.pentaho}</version>
 		</dependency>
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
 			<artifactId>kettle-engine</artifactId>
-			<version>5.0.9</version>
+			<version>${version.pentaho}</version>
 		</dependency>
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
 			<artifactId>kettle-ui-swt</artifactId>
-			<version>5.0.9</version>
+			<version>${version.pentaho}</version>
 		</dependency>
 		<dependency>
 			<groupId>pentaho-kettle</groupId>
@@ -52,7 +53,7 @@
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
-			<version>1.1</version>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>jsonpath</groupId>
@@ -68,7 +69,7 @@
 		<dependency>
 			<groupId>net.minidev</groupId>
 			<artifactId>json-smart</artifactId>
-			<version>2.2</version>
+			<version>2.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>net.minidev</groupId>
@@ -129,38 +130,18 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin> <!--Required to build the final dist as per kettle spec-->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptor>src/assembly/assembly.xml</descriptor>
+				</configuration>
 				<executions>
 					<execution>
-						<phase>install</phase>
-						<configuration>
-							<tasks>
-								<echo message="Looking for local PDI installation in ${pdi.home}"/>
-
-								<!-- change these to adapt to your environment -->
-								<property name="kettle-dir" location="your_kettle_4.x_dir_here" />
-								<available file="${pdi.home}" type="dir" property="kettle-dir.present" />
-								<fail unless="kettle-dir.present" message="PDI installation not found. Please specify the path to your PDI installation using mvn install -Dpdi.home=/my/path"/>
-
-								<!-- remove previous installations -->
-								<delete dir="${pdi.home}/plugins/steps/${project.name}" />
-
-								<!-- put fresh files in place -->
-								<mkdir dir="${pdi.home}/plugins/steps/${project.name}" />
-								<copy todir="${pdi.home}/plugins/steps/${project.name}">
-									<fileset dir="target/" includes="**/fastjson*.jar" />
-									<fileset dir="src/main/resources/" includes="**" />
-									<fileset dir="target/lib" includes="json-smart*jar,json-path*jar,asm*jar"  />
-								</copy>
-								<echo message="Installed the plugin in PDI. To test, please restart Spoon."/>
-							</tasks>
-						</configuration>
+						<phase>package</phase>
 						<goals>
-							<goal>run</goal>
+							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
