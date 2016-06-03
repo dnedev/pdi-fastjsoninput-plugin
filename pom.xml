@@ -12,7 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
-		<version.pentaho>5.0.9</version.pentaho>
+		<version.pentaho>6.1.0.1-196</version.pentaho>
 	</properties>
 
 	<repositories>
