@@ -20,8 +20,18 @@
                 <include>net.minidev:json-smart:jar</include>
                 <include>net.minidev:asm:jar</include>
             </includes>
-            <outputDirectory>lib</outputDirectory>
+            <outputDirectory></outputDirectory>
         </dependencySet>
     </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/main/resources/</directory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+    </fileSets>
 
 </assembly>
