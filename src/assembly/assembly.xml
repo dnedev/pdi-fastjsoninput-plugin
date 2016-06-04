@@ -12,6 +12,7 @@
             <includes>
                 <include>${project.groupId}:${project.artifactId}:jar</include>
             </includes>
+            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
             <outputDirectory></outputDirectory>
         </dependencySet>
         <dependencySet>
@@ -20,6 +21,7 @@
                 <include>net.minidev:json-smart:jar</include>
                 <include>net.minidev:asm:jar</include>
             </includes>
+            <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
             <outputDirectory></outputDirectory>
         </dependencySet>
     </dependencySets>

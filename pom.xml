@@ -4,7 +4,7 @@
 
 	<groupId>com.trail2peak.pdi</groupId>
 	<artifactId>FastJsonInput</artifactId>
-	<version>1.1.5</version>
+	<version>1.1.6</version>
 	<name>FastJsonInput</name>
 
 
@@ -119,27 +119,6 @@
 				<configuration>
 					<finalName>fastjsoninput</finalName>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.9</version>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>target/lib</outputDirectory>
-							<excludeTransitive>true</excludeTransitive>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
