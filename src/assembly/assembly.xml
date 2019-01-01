@@ -19,7 +19,6 @@
             <includes>
                 <include>com.jayway.jsonpath:json-path:jar</include>
                 <include>net.minidev:json-smart:jar</include>
-                <include>net.minidev:asm:jar</include>
             </includes>
             <outputFileNameMapping>${artifact.artifactId}.${artifact.extension}</outputFileNameMapping>
             <outputDirectory></outputDirectory>
